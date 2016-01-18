@@ -1,4 +1,4 @@
-FROM centos:centos7
+FROM docker.io/centos:centos7
 MAINTAINER Markus Wasserschaff markus.wasserschaff@telekom.de
 
 RUN yum install -y epel-release && yum clean all
