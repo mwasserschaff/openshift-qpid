@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+  creationTimestamp: 2016-01-19T09:51:30Z
+  labels:
+    app: centos
+  name: openshift-qpid
+  namespace: pulp
+  resourceVersion: "25415"
+  selfLink: /oapi/v1/namespaces/pulp/buildconfigs/openshift-qpid
+  uid: 3734ba07-be92-11e5-a8c8-080027c5bfa9
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: openshift-qpid:latest
+  resources: {}
+  source:
+    git:
+      uri: https://github.com/mwasserschaff/openshift-qpid.git
+    type: Git
+  strategy:
+    dockerStrategy:
+      from:
+        kind: ImageStreamTag
+        name: centos:centos7
+    type: Docker
+  triggers:
+  - github:
+      secret: C2VqC0nMr4-aIpXo3fsB
+    type: GitHub
+  - generic:
+      secret: KpD8h6Pqm5R9-sfwFDA9
+    type: Generic
+  - type: ConfigChange
+  - imageChange:
+      lastTriggeredImageID: library/centos@sha256:0b0e2e8ff4ce5bb714fc30356f2a7f6ae29a1b84adef9f5cd22b388ffccb65d7
+    type: ImageChange
+status:
+  lastVersion: 1
